@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <logo />
-    <router-link class="navbar-brand" to="/about">About</router-link>
+    <router-link class="nav-link" to="/about">About</router-link>
+    <router-link class="nav-link" to="/references">References</router-link>
     <h1 class="title">
       prevent-loss
     </h1>
