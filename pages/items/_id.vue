@@ -1,6 +1,14 @@
 <template>
   <div class="item">
-    <h2>itemId: {{ id }}</h2>
+    <h2>Item detail</h2>
+    <ul>
+      <li>itemId: {{ item.id }}</li>
+      <li>name: {{ item.name }}</li>
+      <li>desc: {{ item.desc }}</li>
+      <li>amount: {{ item.amount }}</li>
+      <li>min: {{ item.min }}</li>
+      <li>max: {{ item.max }}</li>
+    </ul>
   </div>
 </template>
 
@@ -8,7 +16,14 @@
 export default {
   data() {
     return {
-      id: this.$route.params.id
+      item: {
+        id: this.$route.params.id,
+        name: 'hoge',
+        desc: 'description',
+        amount: 100,
+        min: 10,
+        max: 1000
+      }
     }
   }
 }
