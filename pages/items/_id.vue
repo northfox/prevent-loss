@@ -14,25 +14,45 @@
         <textarea v-model="item.desc"></textarea>
       </li>
       <li>
-        amount:
-        <input v-model="item.amount" type="number" />
+        left:
+        <input v-model="item.left" type="number" />
       </li>
       <li>
-        min:
-        <input v-model="item.min" type="number" />
+        idealLeft:
+        <input v-model="item.idealLeft" type="number" />
       </li>
       <li>
-        max:
-        <input v-model="item.max" type="number" />
+        deficientNumber:
+        <input v-model="item.deficientNumber" type="number" />
+      </li>
+      <li>
+        buyDate:
+        <input v-model="item.buyDate" type="datetime-local" />
+      </li>
+      <li>
+        bestByDate:
+        <input v-model="item.bestByDate" type="datetime-local" />
+      </li>
+      <li>
+        expiryDate:
+        <input v-model="item.expiryDate" type="datetime-local" />
+      </li>
+      <li>
+        expectedDigestionDays:
+        <input v-model="item.expectedDigestionDays" type="number" />
       </li>
     </ul>
     <ul v-else>
       <li>itemId: {{ item.id }}</li>
       <li>name: {{ item.name }}</li>
       <li>desc: {{ item.desc }}</li>
-      <li>amount: {{ item.amount }}</li>
-      <li>min: {{ item.min }}</li>
-      <li>max: {{ item.max }}</li>
+      <li>left: {{ item.left }}</li>
+      <li>min: {{ item.idealLeft }}</li>
+      <li>max: {{ item.deficientNumber }}</li>
+      <li>max: {{ item.buyDate }}</li>
+      <li>max: {{ item.bestByDate }}</li>
+      <li>max: {{ item.expiryDate }}</li>
+      <li>max: {{ item.expectedDigestionDays }}</li>
     </ul>
   </div>
 </template>
@@ -46,9 +66,13 @@ export default {
         id: this.$route.params.id,
         name: 'hoge',
         desc: 'description',
-        amount: 100,
-        min: 10,
-        max: 1000
+        left: 100,
+        idealLeft: 150,
+        // deficientNumber: this.item.idealLeft - this.item.left,
+        buyDate: this.$dayjs().format('YYYY-MM-DD'),
+        bestByDate: this.$dayjs().format('YYYY-MM-DD'),
+        expiryDate: this.$dayjs().format('YYYY-MM-DD'),
+        expectedDigestionDays: 5
       }
     }
   }
