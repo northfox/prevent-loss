@@ -23,7 +23,7 @@
       </li>
       <li>
         deficientNumber:
-        <input v-model="item.deficientNumber" type="number" />
+        {{ deficientNumber }}
       </li>
       <li>
         buyDate:
@@ -47,12 +47,12 @@
       <li>name: {{ item.name }}</li>
       <li>desc: {{ item.desc }}</li>
       <li>left: {{ item.left }}</li>
-      <li>min: {{ item.idealLeft }}</li>
-      <li>max: {{ item.deficientNumber }}</li>
-      <li>max: {{ item.buyDate }}</li>
-      <li>max: {{ item.bestByDate }}</li>
-      <li>max: {{ item.expiryDate }}</li>
-      <li>max: {{ item.expectedDigestionDays }}</li>
+      <li>idealLeft: {{ item.idealLeft }}</li>
+      <li>deficientNumber: {{ deficientNumber }}</li>
+      <li>buyDate: {{ formatDate(item.buyDate) }}</li>
+      <li>bestByDate: {{ formatDate(item.bestByDate) }}</li>
+      <li>expiryDate: {{ formatDate(item.expiryDate) }}</li>
+      <li>expectedDigestionDays: {{ item.expectedDigestionDays }}</li>
     </ul>
   </div>
 </template>
@@ -68,12 +68,21 @@ export default {
         desc: 'description',
         left: 100,
         idealLeft: 150,
-        // deficientNumber: this.item.idealLeft - this.item.left,
-        buyDate: this.$dayjs().format('YYYY-MM-DD'),
-        bestByDate: this.$dayjs().format('YYYY-MM-DD'),
-        expiryDate: this.$dayjs().format('YYYY-MM-DD'),
+        buyDate: this.$dayjs().format('YYYY-MM-DDThh:mm:ss'),
+        bestByDate: this.$dayjs().format('YYYY-MM-DDThh:mm:ss'),
+        expiryDate: this.$dayjs().format('YYYY-MM-DDThh:mm:ss'),
         expectedDigestionDays: 5
       }
+    }
+  },
+  computed: {
+    deficientNumber() {
+      return this.item.idealLeft - this.item.left
+    }
+  },
+  methods: {
+    formatDate(date) {
+      return this.$dayjs(date).format('YYYY-MM-DD hh:mm:ss')
     }
   }
 }
